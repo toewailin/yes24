@@ -39,7 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($items as $item)
+                                @foreach ($products as $item)
                                     <tr class="hover:bg-gray-50">
                                         <td class="border border-gray-300 px-4 py-2">{{ $item->id }}</td>
                                         <td class="border border-gray-300 px-4 py-2">{{ $item->name }}</td>
@@ -79,7 +79,7 @@
 
                     <!-- Pagination -->
                     <div class="mt-4">
-                        {{ $items->links() }}
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>

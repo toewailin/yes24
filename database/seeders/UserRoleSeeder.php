@@ -13,20 +13,21 @@ class UserRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // Assign 'admin' role to the first user
-        $user = User::find(1);
-        $adminRole = Role::where(['name' => 'admin', 'guard_name' => 'web'])->first();
+        // Assign roles to users based on their IDs
+        $roles = [
+            1 => 'admin', // Admin (already assigned)
+            2 => 'manager',
+            3 => 'seller',
+            4 => 'customer', // Customer (already assigned)
+        ];
 
-        if ($user && $adminRole) {
-            $user->syncRoles([$adminRole->name]);
-        }
+        foreach ($roles as $userId => $roleName) {
+            $user = User::find($userId);
+            $role = Role::where(['name' => $roleName, 'guard_name' => 'web'])->first();
 
-        // Assign 'customer' role to the second user
-        $customerUser = User::find(2);
-        $customerRole = Role::where(['name' => 'customer', 'guard_name' => 'web'])->first();
-
-        if ($customerUser && $customerRole) {
-            $customerUser->syncRoles([$customerRole->name]);
+            if ($user && $role) {
+                $user->syncRoles([$role->name]);
+            }
         }
     }
 }

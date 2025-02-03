@@ -7,7 +7,7 @@
                     <div x-data="{ open: false }" class="bg-white rounded-lg shadow-md p-4 dark:bg-gray-700">
                         <button
                             @click="open = !open"
-                            class="flex justify-between items-center w-full text-left text-lg font-bold text-gray-800 dark:text-white focus:outline-none"
+                            class="flex justify-between products-center w-full text-left text-lg font-bold text-gray-800 dark:text-white focus:outline-none"
                         >
                             {{ $faq->question }}
                             <svg

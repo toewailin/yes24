@@ -53,7 +53,7 @@
                             <option>20</option>
                         </select>
 
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex products-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                             </svg>
@@ -67,7 +67,7 @@
                             <option>Inactive</option>
                         </select>
 
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex products-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                             </svg>
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="block relative mt-2 sm:mt-0">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                    <span class="absolute inset-y-0 left-0 flex products-center pl-2">
                         <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
                             <path d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"></path>
                         </svg>
@@ -100,7 +100,7 @@
                         <tbody>
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="w-full h-full rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80" alt="" />
                                         </div>
@@ -125,7 +125,7 @@
                             </tr>
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="w-full h-full rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80" alt="" />
                                         </div>
@@ -149,7 +149,7 @@
                             </tr>
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="w-full h-full rounded-full" src="https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80" alt="" />
                                         </div>
@@ -173,7 +173,7 @@
                             </tr>
                             <tr>
                                 <td class="px-5 py-5 bg-white text-sm">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="w-full h-full rounded-full" src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80" alt="" />
                                         </div>
@@ -197,7 +197,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
+                    <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row products-center xs:justify-between">
                         <span class="text-xs xs:text-sm text-gray-900">Showing 1 to 4 of 50 Entries</span>
 
                         <div class="inline-flex mt-2 xs:mt-0">
@@ -230,7 +230,7 @@
                         <tbody class="bg-white">
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>
@@ -259,7 +259,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>
@@ -288,7 +288,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>
@@ -317,7 +317,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>
@@ -346,7 +346,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>
@@ -375,7 +375,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>
@@ -404,7 +404,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>
@@ -433,7 +433,7 @@
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="flex items-center">
+                                    <div class="flex products-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </div>

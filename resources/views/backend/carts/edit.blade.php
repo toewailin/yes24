@@ -16,10 +16,10 @@
 
                         <!-- Item -->
                         <div class="mb-6">
-                            <label for="item_id" class="block text-sm font-medium text-gray-700">Select Item</label>
-                            <select name="item_id" id="item_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
-                                @foreach ($items as $item)
-                                    <option value="{{ $item->id }}" {{ $cart->item_id == $item->id ? 'selected' : '' }}>
+                            <label for="product_id" class="block text-sm font-medium text-gray-700">Select Item</label>
+                            <select name="product_id" id="product_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                @foreach ($products as $item)
+                                    <option value="{{ $item->id }}" {{ $cart->product_id == $item->id ? 'selected' : '' }}>
                                         {{ $item->name }} - ${{ number_format($item->price, 2) }}
                                     </option>
                                 @endforeach
@@ -52,10 +52,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const itemSelect = document.getElementById('item_id');
+            const productselect = document.getElementById('product_id');
             const priceInput = document.getElementById('price');
 
-            itemSelect.addEventListener('change', function () {
+            productselect.addEventListener('change', function () {
                 const selectedOption = this.options[this.selectedIndex];
                 const price = selectedOption.text.match(/\$\d+(\.\d{2})?/); // Extract price from option text
                 priceInput.value = price ? price[0].replace('$', '') : '';

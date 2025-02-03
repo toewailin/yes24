@@ -50,7 +50,7 @@
                         </div>
 
                         <!-- Active Checkbox -->
-                        <div class="mb-6 flex items-center">
+                        <div class="mb-6 flex products-center">
                         <input type="checkbox" name="is_active" id="is_active" class="h-4 w-4 text-blue-600" checked>
                             <label for="is_active" class="ml-2 block text-sm text-gray-700">Active</label>
                         </div>

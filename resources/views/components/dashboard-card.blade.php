@@ -1,4 +1,4 @@
-<div class="flex items-center p-6 bg-gray-100 rounded-xl shadow-lg dark:bg-gray-700 transition-all hover:shadow-xl hover:scale-105">
+<div class="flex products-center p-6 bg-gray-100 rounded-xl shadow-lg dark:bg-gray-700 transition-all hover:shadow-xl hover:scale-105">
     <div class="p-4 bg-white rounded-full shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-8 w-8 text-{{ $color }}-500">
             <use xlink:href="#{{ $icon }}"></use>

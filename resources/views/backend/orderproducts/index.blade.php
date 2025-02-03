@@ -1,7 +1,7 @@
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Order Items') }}
+            {{ __('Order products') }}
         </h2>
     </x-slot>
 
@@ -24,7 +24,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($orderItems as $orderItem)
+                            @foreach ($orderproducts as $orderItem)
                                 <tr class="hover:bg-gray-50">
                                     <td class="border border-gray-300 px-4 py-2">{{ $orderItem->id }}</td>
                                     <td class="border border-gray-300 px-4 py-2">Order #{{ $orderItem->order_id }}</td>
@@ -49,7 +49,7 @@
                     </table>
 
                     <div class="mt-4">
-                        {{ $orderItems->links() }}
+                        {{ $orderproducts->links() }}
                     </div>
                 </div>
             </div>

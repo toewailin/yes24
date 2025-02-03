@@ -6,7 +6,7 @@
                 <div class="bg-white rounded-lg shadow-md p-4 dark:bg-gray-800">
                     <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">{{ $event->title }}</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{{ $event->description }}</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Date: {{ $event->start_date->format('M d, Y') }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Date: {{ \Carbon\Carbon::parse($event->date)->format('M d, Y') }}</p>
                     <a href="{{ route('events.show', $event) }}" class="block bg-blue-600 text-white text-center rounded-lg py-2 mt-4 hover:bg-blue-700">
                         View Details
                     </a>

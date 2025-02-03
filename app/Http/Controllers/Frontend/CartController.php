@@ -14,12 +14,12 @@ class CartController extends Controller
      */
     public function index()
     {
-        // Fetch the cart items for the currently authenticated user
-        $cartItems = Cart::with('item')
+        // Fetch the cart products for the currently authenticated user
+        $cartproducts = Cart::with('item')
             ->where('user_id', auth()->id())
             ->get();
 
-        return view('frontend.cart.index', compact('cartItems'));
+        return view('frontend.cart.index', compact('cartproducts'));
     }
 
     /**
@@ -28,16 +28,16 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'item_id' => 'required|exists:products,id', // Ensure the item exists
+            'product_id' => 'required|exists:products,id', // Ensure the item exists
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $item = Product::findOrFail($request->item_id);
+        $item = Product::findOrFail($request->product_id);
 
         Cart::updateOrCreate(
             [
                 'user_id' => auth()->id(),
-                'item_id' => $item->id,
+                'product_id' => $item->id,
             ],
             [
                 'quantity' => $request->quantity,

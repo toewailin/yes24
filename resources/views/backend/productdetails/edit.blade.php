@@ -14,10 +14,10 @@
                         @method('PUT')
 
                         <div class="mb-4">
-                            <label for="item_id" class="block text-sm font-medium text-gray-700">Item</label>
-                            <select name="item_id" id="item_id" class="form-select mt-1 block w-full">
-                                @foreach ($items as $item)
-                                    <option value="{{ $item->id }}" {{ $itemDetail->item_id == $item->id ? 'selected' : '' }}>
+                            <label for="product_id" class="block text-sm font-medium text-gray-700">Item</label>
+                            <select name="product_id" id="product_id" class="form-select mt-1 block w-full">
+                                @foreach ($products as $item)
+                                    <option value="{{ $item->id }}" {{ $itemDetail->product_id == $item->id ? 'selected' : '' }}>
                                         {{ $item->name }}
                                     </option>
                                 @endforeach

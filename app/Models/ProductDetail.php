@@ -11,7 +11,7 @@ class ProductDetail extends Model
      *
      * @var string
      */
-    protected $table = 'item_details';
+    protected $table = 'product_details';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class ProductDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'item_id',
+        'product_id',
         'attribute_name',
         'attribute_value',
         'is_visible',
@@ -31,6 +31,6 @@ class ProductDetail extends Model
      */
     public function item()
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(Product::class);
     }
 }

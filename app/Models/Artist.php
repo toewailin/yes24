@@ -60,5 +60,5 @@ class Artist extends Model
      * Relationships
      */
 
-    // Define relationships if needed (e.g., albums, songs, or items)
+    // Define relationships if needed (e.g., albums, songs, or products)
 }

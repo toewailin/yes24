@@ -1,7 +1,7 @@
 <header class="bg-white shadow dark:bg-gray-800">
-    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    <div class="container mx-auto flex products-center justify-between py-4 px-6">
         <!-- Logo -->
-        <a href="{{ route('index') }}" class="flex items-center">
+        <a href="{{ route('index') }}" class="flex products-center">
             <img src="{{ asset('images/h1_logo_n.png') }}" alt="Yes24" class="h-8">
         </a>
 

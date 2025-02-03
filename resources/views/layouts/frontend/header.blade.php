@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <header class="bg-white shadow dark:bg-gray-800 sticky top-0 z-50">
-    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    <div class="container mx-auto flex products-center justify-between py-4 px-6">
         <!-- Logo -->
         <a href="/" class="text-2xl font-bold text-gray-800 dark:text-white">Yes24</a>
         <!-- Navigation -->

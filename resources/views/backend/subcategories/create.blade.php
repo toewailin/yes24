@@ -42,7 +42,7 @@
 
                      <!-- Is Active -->
                     <div class="mb-4">
-                        <label for="is_active" class="flex items-center">
+                        <label for="is_active" class="flex products-center">
                             <input
                                 type="checkbox"
                                 name="is_active"

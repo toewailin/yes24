@@ -12,9 +12,9 @@
                     <form action="{{ route('admin.product-details.store') }}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="item_id" class="block text-sm font-medium text-gray-700">Item</label>
-                            <select name="item_id" id="item_id" class="form-select mt-1 block w-full">
-                                @foreach ($items as $item)
+                            <label for="product_id" class="block text-sm font-medium text-gray-700">Item</label>
+                            <select name="product_id" id="product_id" class="form-select mt-1 block w-full">
+                                @foreach ($products as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>

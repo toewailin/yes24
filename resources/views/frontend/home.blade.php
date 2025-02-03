@@ -19,7 +19,7 @@
         <div class="container mx-auto px-6">
             <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-8">Best-Selling Products</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                @foreach ($items as $item)
+                @foreach ($products as $item)
                     <div class="bg-white rounded-lg shadow-md p-4 dark:bg-gray-700">
                         <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="rounded-lg mb-4">
                         <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">{{ $item->name }}</h3>
@@ -41,8 +41,7 @@
                 <div class="bg-white rounded-lg shadow-md p-4 dark:bg-gray-800">
                     <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">{{ $event->title }}</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{{ $event->description }}</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Date: {{ $event->start_date->format('M d, Y') }}</p>
-                </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Date: Jan 15, 2024</p>                </div>
             @endforeach
         </div>
     </section>

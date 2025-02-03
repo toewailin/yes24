@@ -35,11 +35,11 @@ class SubCategory extends Model
     }
 
     /**
-     * Items Relationship.
-     * A subcategory may have multiple items.
+     * products Relationship.
+     * A subcategory may have multiple products.
      */
-    public function items()
+    public function products()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Product::class);
     }
 }

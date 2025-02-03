@@ -17,7 +17,7 @@
                 <form action="{{ route('cart.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <div class="flex items-center space-x-4 mb-4">
+                    <div class="flex products-center space-x-4 mb-4">
                         <label for="quantity" class="text-sm text-gray-700 dark:text-gray-300">Quantity:</label>
                         <input
                             type="number"

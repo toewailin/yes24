@@ -45,7 +45,7 @@
 
                         <!-- Is Active -->
                         <div class="mb-4">
-                            <label class="flex items-center">
+                            <label class="flex products-center">
                                 <input type="checkbox" name="is_active" id="is_active" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" {{ $subcategory->is_active ? 'checked' : '' }}>
                                 <span class="ml-2 text-sm text-gray-700">Active</span>
                             </label>

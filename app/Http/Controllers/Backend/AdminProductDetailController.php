@@ -41,7 +41,7 @@ class AdminProductDetailController extends Controller
 
         $item->details()->create($validated);
 
-        return redirect()->route('items.details.index', $item)
+        return redirect()->route('products.details.index', $item)
             ->with('success', 'Item detail added successfully.');
     }
 
@@ -67,7 +67,7 @@ class AdminProductDetailController extends Controller
 
         $detail->update($validated);
 
-        return redirect()->route('items.details.index', $item)
+        return redirect()->route('products.details.index', $item)
             ->with('success', 'Item detail updated successfully.');
     }
 
@@ -78,7 +78,7 @@ class AdminProductDetailController extends Controller
     {
         $detail->delete();
 
-        return redirect()->route('items.details.index', $item)
+        return redirect()->route('products.details.index', $item)
             ->with('success', 'Item detail deleted successfully.');
     }
 }

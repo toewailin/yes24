@@ -42,7 +42,7 @@
                 <!-- Footer -->
                 <footer class="bg-gray-800 text-white">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="py-6 flex flex-col sm:flex-row justify-between items-center">
+                        <div class="py-6 flex flex-col sm:flex-row justify-between products-center">
                             <p class="text-sm text-center sm:text-left">
                                 © {{ now()->year }} E-Commerce Admin. All rights reserved.
                             </p>

@@ -68,7 +68,7 @@
                     <h3 class="font-semibold text-gray-700 text-lg">Sales Overview</h3>
                     <div class="mt-4">
                         <!-- Placeholder for charts -->
-                        <div class="h-64 bg-gray-100 border rounded-lg flex items-center justify-center">
+                        <div class="h-64 bg-gray-100 border rounded-lg flex products-center justify-center">
                             <p class="text-gray-500">[Chart Placeholder]</p>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <!-- <a href="" class="block p-4 bg-blue-500 text-white rounded-lg text-center hover:bg-blue-600">
                             Add New Item
                         </a> -->
-                        <a href="{{ route('frontend.orders.index') }}" class="block p-4 bg-green-500 text-white rounded-lg text-center hover:bg-green-600">
+                        <a href="{{ route('orders.index') }}" class="block p-4 bg-green-500 text-white rounded-lg text-center hover:bg-green-600">
                             View My Orders
                         </a>
                         <!-- <a href="" class="block p-4 bg-purple-500 text-white rounded-lg text-center hover:bg-purple-600">

@@ -37,7 +37,7 @@
              @include('layouts.frontend.hero')
 
             <!-- Best-Selling Products Section -->
-            @include('layouts.frontend.best-selling-products', ['items' => $items ?? collect()])
+            @include('layouts.frontend.best-selling-products', ['products' => $products ?? collect()])
 
             <!-- Events Section -->
             @include('layouts.frontend.events', ['events' => $events ?? collect()])

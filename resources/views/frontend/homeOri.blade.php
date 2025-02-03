@@ -16,7 +16,7 @@
     <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 dark:text-white">
         <!-- Navbar -->
         <header class="bg-white shadow dark:bg-gray-800 sticky top-0 z-50">
-            <div class="container mx-auto flex items-center justify-between py-4 px-6">
+            <div class="container mx-auto flex products-center justify-between py-4 px-6">
                 <!-- Logo -->
                 <a href="/" class="text-2xl font-bold text-gray-800 dark:text-white">Yes24</a>
                 <!-- Navigation -->
@@ -89,7 +89,7 @@
             <div class="container mx-auto px-6">
                 <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-8">Best-Selling Products</h2>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    @foreach ($items as $item)
+                    @foreach ($products as $item)
                         <div class="bg-white rounded-lg shadow-md p-4 dark:bg-gray-700">
                             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="rounded-lg mb-4">
                             <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">{{ $item->name }}</h3>

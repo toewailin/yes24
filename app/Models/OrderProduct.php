@@ -11,7 +11,7 @@ class OrderProduct extends Model
      *
      * @var string
      */
-    protected $table = 'order_items';
+    protected $table = 'order_products';
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,7 @@ class OrderProduct extends Model
      */
     protected $fillable = [
         'order_id',
-        'item_id',
+        'product_id',
         'quantity',
         'price',
         'subtotal',

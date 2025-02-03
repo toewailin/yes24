@@ -25,8 +25,8 @@
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4 flex items-center justify-between">
-            <label for="remember_me" class="inline-flex items-center">
+        <div class="block mt-4 flex products-center justify-between">
+            <label for="remember_me" class="inline-flex products-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
@@ -37,7 +37,7 @@
             @endif
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex products-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="btn btn-link text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
                     {{ __('Create an account') }}

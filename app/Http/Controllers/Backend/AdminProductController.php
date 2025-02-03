@@ -18,23 +18,23 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        $items = Product::with('category', 'subcategory', 'artist', 'supplier')
+        $products = Product::with('category', 'subcategory', 'artist', 'supplier')
             ->paginate(10);
 
-        return view('backend.products.index', compact('items'));
+        return view('backend.products.index', compact('products'));
     }
 
     /**
-     * Search for items by name or other attributes.
+     * Search for products by name or other attributes.
      */
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $items = Product::where('name', 'LIKE', "%{$query}%")
+        $products = Product::where('name', 'LIKE', "%{$query}%")
             ->orWhere('description', 'LIKE', "%{$query}%")
             ->paginate(10);
 
-        return view('backend.products.search_results', compact('items', 'query'));
+        return view('backend.products.search_results', compact('products', 'query'));
     }
 
     /**
@@ -59,7 +59,7 @@ class AdminProductController extends Controller
     public function store(Request $request)
 {
     $validated = $request->validate([
-        'name' => 'required|string|max:255|unique:items,name',
+        'name' => 'required|string|max:255|unique:products,name',
         'description' => 'nullable|string',
         'price' => 'required|numeric|min:0',
         'stock' => 'required|integer|min:0',
@@ -71,7 +71,7 @@ class AdminProductController extends Controller
         'discount' => 'nullable|numeric|min:0|max:100',
         'tax' => 'nullable|numeric|min:0',
         'attributes' => 'nullable|array',
-        'sku' => 'nullable|string|max:255|unique:items,sku',
+        'sku' => 'nullable|string|max:255|unique:products,sku',
     ]);
 
     // Handle SKU Generation
@@ -79,7 +79,7 @@ class AdminProductController extends Controller
 
     // Handle Main Image
     if ($request->hasFile('image')) {
-        $validated['image'] = $request->file('image')->store('items', 'public');
+        $validated['image'] = $request->file('image')->store('products', 'public');
     }
 
     // Create the Item
@@ -113,7 +113,7 @@ class AdminProductController extends Controller
     public function update(Request $request, Product $item)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:items,name,' . $item->id,
+            'name' => 'required|string|max:255|unique:products,name,' . $item->id,
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
@@ -131,7 +131,7 @@ class AdminProductController extends Controller
             if ($item->image) {
                 Storage::disk('public')->delete($item->image);
             }
-            $validated['image'] = $request->file('image')->store('items', 'public');
+            $validated['image'] = $request->file('image')->store('products', 'public');
         }
 
         $item->update($validated);

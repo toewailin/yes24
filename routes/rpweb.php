@@ -26,9 +26,9 @@ Route::get('subcategories', [SubCategoryController::class, 'index'])->name('subc
 Route::get('subcategories/{subcategory}', [SubCategoryController::class, 'show'])->name('subcategories.show');
 Route::get('artists', [ArtistController::class, 'index'])->name('artists.index');
 Route::get('artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
-Route::get('items', [ItemController::class, 'index'])->name('items.index');
-Route::get('items/search', [ItemController::class, 'search'])->name('items.search');
-Route::get('items/{item}', [ItemController::class, 'show'])->name('items.show');
+Route::get('products', [ItemController::class, 'index'])->name('products.index');
+Route::get('products/search', [ItemController::class, 'search'])->name('products.search');
+Route::get('products/{item}', [ItemController::class, 'show'])->name('products.show');
 Route::get('faqs', [FaqController::class, 'index'])->name('faqs.index');
 Route::get('faqs/{faq}', [FaqController::class, 'show'])->name('faqs.show');
 Route::get('events', [EventController::class, 'index'])->name('events.index');
@@ -63,10 +63,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         'categories' => CategoryController::class,
         'subcategories' => SubCategoryController::class,
         'artists' => ArtistController::class,
-        'items' => ItemController::class,
+        'products' => ItemController::class,
         'item-details' => ItemDetailController::class,
         'suppliers' => SupplierController::class,
-        'order-items' => OrderItemController::class,
+        'order-products' => OrderItemController::class,
     ], ['except' => ['index', 'show']]);
     
     Route::resource('events', EventController::class)->except(['index', 'show']);

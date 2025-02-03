@@ -9,7 +9,7 @@
         <x-dashboard-card title="Product Details" count="{{ $data['productDetails'] }}" icon="tag" color="red" />
         <x-dashboard-card title="Carts" count="{{ $data['carts'] }}" icon="shopping-bag" color="yellow" />
         <x-dashboard-card title="Orders" count="{{ $data['orders'] }}" icon="clipboard-check" color="teal" />
-        <x-dashboard-card title="Order Items" count="{{ $data['orderItems'] }}" icon="list" color="purple" />
+        <x-dashboard-card title="Order products" count="{{ $data['orderproducts'] }}" icon="list" color="purple" />
         <x-dashboard-card title="FAQs" count="{{ $data['faqs'] }}" icon="question-mark-circle" color="gray" />
         <x-dashboard-card title="Events" count="{{ $data['events'] }}" icon="calendar" color="cyan" />
         <x-dashboard-card title="Suppliers" count="{{ $data['suppliers'] }}" icon="truck" color="lime" />

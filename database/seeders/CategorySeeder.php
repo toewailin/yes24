@@ -2,19 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
+use Illuminate\Support\Str;
+use App\Models\Category;
 
-class ProductTableSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        $faker = Faker::create();
+        // Base Image URL
+        $baseImageUrl = 'https://secimage.yes24.com/';
+
+        // List of image paths
         $image_urls = [
             "goods/138929900/L",
             "goods/138929901/L",
@@ -1119,60 +1118,38 @@ class ProductTableSeeder extends Seeder
             "goods/138931000/L",
         ];
 
-        // Fetch category_id as the key and array of subcategory_ids as the value
-        $subcategoryIds = DB::table('subcategories')->pluck('id', 'category_id')->toArray();
+        // Define categories
+        $categories = [
+            [
+                'name' => 'Music & Vinyl',
+                'slug' => 'music-vinyl',
+            ],
+            [
+                'name' => 'Movie & TV',
+                'slug' => 'movie-tv',
+            ],
+            [
+                'name' => 'Star Shop',
+                'slug' => 'star-shop',
+            ],
+            [
+                'name' => 'Customer Center',
+                'slug' => 'customer-center',
+            ],
+        ];
 
-        // Loop to insert 1,100 items
-        for ($i = 0; $i < 1100; $i++) {
-            // Randomly pick a category_id from the keys of $subcategoryIds array
-            $categoryId = $faker->randomElement(array_keys($subcategoryIds));
-
-            // Randomly pick a subcategory_id from the corresponding category
-            $subcategoryId = $faker->randomElement( (array) $subcategoryIds[$categoryId]);
-
-            // Insert item into the 'items' table
-            $itemId = DB::table('items')->insertGetId([
-                'name' => $faker->word . ' ' . $faker->word, // Random item name
-                'description' => $faker->text(200), // Random description
-                'price' => $faker->randomFloat(2, 1, 500), // Random price between 1 and 500
-                'stock' => $faker->numberBetween(0, 100), // Random stock quantity
-                'sku' => strtoupper($faker->bothify('??###??')), // Random SKU
-                'is_active' => $faker->boolean(), // Random active status
-                'category_id' => $categoryId, // Random category_id
-                'subcategory_id' => $subcategoryId, // Random subcategory_id from the selected category
-                'supplier_id' => $faker->optional()->numberBetween(1, 10), // Random supplier_id (optional)
-                'artist_id' => $faker->optional()->numberBetween(1, 10), // Random artist_id (optional)
-                'image' => $image_urls[$i], // Random image URL
-                'additional_images' => json_encode([$faker->imageUrl(), $faker->imageUrl()]), // Random additional images
-                'attributes' => json_encode([
-                    'size' => $faker->randomElement(['Small', 'Medium', 'Large']),
-                    'color' => $faker->safeColorName(),
-                ]), // Random attributes
-                'discount' => $faker->randomFloat(2, 0, 50), // Random discount percentage
-                'tax' => $faker->randomFloat(2, 5, 20), // Random tax percentage
-                'slug' => \Str::slug($faker->word . ' ' . $faker->word), // Generate slug from random name
-                'meta_title' => $faker->sentence(6), // Random meta title
-                'meta_description' => $faker->text(100), // Random meta description
-                'views' => $faker->numberBetween(0, 500), // Random view count
-                'sales' => $faker->numberBetween(0, 100), // Random sales count
-                'created_at' => now(),
-                'updated_at' => now(),
+        // Insert categories with images
+        foreach ($categories as $index => $categoryData) {
+            Category::updateOrCreate([
+                'slug' => $categoryData['slug'],
+            ], [
+                'name' => $categoryData['name'],
+                'slug' => $categoryData['slug'],
+                'description' => $categoryData['name'] . ' section',
+                'image' => $baseImageUrl . ($image_urls[$index] ?? "goods/default.jpg"),
+                'is_active' => true,
+                'parent_id' => null,
             ]);
-
-            // Insert item details for each item
-            $numDetails = $faker->numberBetween(1, 3); // Random number of details (1 to 3)
-            for ($j = 0; $j < $numDetails; $j++) {
-                DB::table('item_details')->insert([
-                    'item_id' => $itemId,
-                    'attribute_name' => $faker->word, // Random attribute name (e.g., size, color)
-                    'attribute_value' => $faker->word, // Random attribute value
-                    'subcategory_id' => $subcategoryId, // Random subcategory_id from the selected category
-                    'is_visible' => $faker->boolean(), // Random visibility status
-                    'display_order' => $faker->numberBetween(1, 10), // Random display order
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            }
         }
     }
 }

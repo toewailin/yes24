@@ -20,7 +20,7 @@ class Cart extends Model
      */
     protected $fillable = [
         'user_id',
-        'item_id',
+        'product_id',
         'quantity',
         'price',
     ];
@@ -38,7 +38,7 @@ class Cart extends Model
     // Relation to Item
     public function item()
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(Product::class);
     }
 
     /**

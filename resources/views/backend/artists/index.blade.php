@@ -1,265 +1,89 @@
 <x-admin-layout>
-    <h3 class="text-gray-700 text-3xl font-medium">{{"Artists"}}</h3>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Artists') }}
+        </h2>
+    </x-slot>
 
-    <div class="flex flex-col mt-8">
-        <a class="btn btn-success text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('admin.artists.create') }}">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm sm:rounded-lg">
+                <div class="p-6">
+                    <h3 class="font-semibold text-gray-700 text-lg mb-6">Manage Artists</h3>
 
-            <x-primary-button class="mb-4">
-                {{ __('Create Artist') }}
-            </x-primary-button>
-        </a>
-        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                        </tr>
-                    </thead>
+                    <!-- Add New Artist Button -->
+                    <a href="{{ route('admin.artists.create') }}" class="block w-full sm:w-auto mb-6 px-6 py-3 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700 shadow-md transition-all">
+                        Add New Artist
+                    </a>
 
-                    <tbody class="bg-white">
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
+                    <!-- Artists Table -->
+                    <div class="mt-6 overflow-x-auto">
+                        <table class="min-w-full border-collapse border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="border border-gray-300 px-4 py-2">ID</th>
+                                    <th class="border border-gray-300 px-4 py-2">Name</th>
+                                    <th class="border border-gray-300 px-4 py-2">Slug</th>
+                                    <th class="border border-gray-300 px-4 py-2">Bio</th>
+                                    <th class="border border-gray-300 px-4 py-2">Image</th>
+                                    <th class="border border-gray-300 px-4 py-2">Genre</th>
+                                    <th class="border border-gray-300 px-4 py-2">Active</th>
+                                    <th class="border border-gray-300 px-4 py-2">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($artists as $artist)
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">{{ $artist->id }}</td>
+                                        <td class="border border-gray-300 px-4 py-2">{{ $artist->name }}</td>
+                                        <td class="border border-gray-300 px-4 py-2">{{ $artist->slug }}</td>
+                                        <td class="border border-gray-300 px-4 py-2">{{ Str::limit($artist->bio, 50, '...') ?? 'N/A' }}</td>
+                                        <td class="border border-gray-300 px-4 py-2">
+                                            @if ($artist->image)
+                                                <img src="{{ asset('storage/' . $artist->image) }}" alt="{{ $artist->name }}" class="w-16 h-16 object-cover rounded-md">
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                        <td class="border border-gray-300 px-4 py-2">{{ $artist->genre ?? 'N/A' }}</td>
+                                        <td class="border border-gray-300 px-4 py-2">
+                                            <span class="{{ $artist->is_active ? 'text-green-500' : 'text-red-500' }}">
+                                                {{ $artist->is_active ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+                                        <td class="border border-gray-300 px-4 py-2">
+                                            <div class="flex space-x-2">
+                                                <a href="{{ route('admin.artists.show', $artist) }}" class="text-sm px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                                    View
+                                                </a>
+                                                <a href="{{ route('admin.artists.edit', $artist) }}" class="text-sm px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+                                                    Edit
+                                                </a>
+                                                <form action="{{ route('admin.artists.destroy', $artist) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-sm px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="8" class="border border-gray-300 px-4 py-2 text-center">No artists found.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
 
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
-
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
-
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
-
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
-
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
-
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
-
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div>
-
-                                    <div class="ml-4">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe</div>
-                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
-
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <!-- Pagination -->
+                    <div class="mt-4">
+                        {{ $artists->links() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
 </x-admin-layout>
-

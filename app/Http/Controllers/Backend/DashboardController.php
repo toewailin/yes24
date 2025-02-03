@@ -19,7 +19,7 @@ class DashboardController extends Controller
             'productDetails' => \App\Models\ProductDetail::count(),
             'carts' => \App\Models\Cart::count(),
             'orders' => \App\Models\Order::count(),
-            'orderItems' => \App\Models\OrderProduct::count(),
+            'orderproducts' => \App\Models\OrderProduct::count(),
             'faqs' => \App\Models\Faq::count(),
             'events' => \App\Models\Event::count(),
             'suppliers' => \App\Models\Supplier::count(),

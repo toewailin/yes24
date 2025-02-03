@@ -32,7 +32,7 @@
                         </div>
 
                         <!-- Active Checkbox -->
-                        <div class="mb-6 flex items-center">
+                        <div class="mb-6 flex products-center">
                             <input type="hidden" name="is_active" value="0">
                             <input type="checkbox" name="is_active" id="is_active" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" value="1" checked>
                         </div>

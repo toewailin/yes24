@@ -11,7 +11,7 @@
                 <div class="p-6">
                     <h3 class="text-lg font-semibold mb-4">Order Item #{{ $orderItem->id }}</h3>
                     <p><strong>Order:</strong> Order #{{ $orderItem->order_id }}</p>
-                    <p><strong>Item:</strong> {{ $orderItem->item->name ?? 'N/A' }}</p>
+                    <p><strong>Product:</strong> {{ $orderItem->item->name ?? 'N/A' }}</p>
                     <p><strong>Quantity:</strong> {{ $orderItem->quantity }}</p>
                     <a href="{{ route('admin.order-products.index') }}" class="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Back to List</a>
                 </div>

@@ -15,8 +15,8 @@ class AdminOrderProductController extends Controller
      */
     public function index()
     {
-        $orderItems = OrderProduct::with('order', 'item')->paginate(10);
-        return view('backend.orderproducts.index', compact('orderItems'));
+        $orderproducts = OrderProduct::with('order', 'item')->paginate(10);
+        return view('backend.orderproducts.index', compact('orderproducts'));
     }
 
     /**
@@ -25,8 +25,8 @@ class AdminOrderProductController extends Controller
     public function create()
     {
         $orders = Order::all();
-        $items = Product::all();
-        return view('backend.orderproducts.create', compact('orders', 'items'));
+        $products = Product::all();
+        return view('backend.orderproducts.create', compact('orders', 'products'));
     }
 
     /**
@@ -36,7 +36,7 @@ class AdminOrderProductController extends Controller
     {
         $validated = $request->validate([
             'order_id' => 'required|exists:orders,id',
-            'item_id' => 'required|exists:items,id',
+            'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
         ]);
@@ -62,8 +62,8 @@ class AdminOrderProductController extends Controller
     public function edit(OrderProduct $orderItem)
     {
         $orders = Order::all();
-        $items = Product::all();
-        return view('backend.orderproducts.edit', compact('orderItem', 'orders', 'items'));
+        $products = Product::all();
+        return view('backend.orderproducts.edit', compact('orderItem', 'orders', 'products'));
     }
 
     /**
@@ -73,7 +73,7 @@ class AdminOrderProductController extends Controller
     {
         $validated = $request->validate([
             'order_id' => 'required|exists:orders,id',
-            'item_id' => 'required|exists:items,id',
+            'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
         ]);

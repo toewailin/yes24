@@ -26,16 +26,16 @@ class AdminCartController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'item_id' => 'required|exists:items,id',
+            'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $item = Product::findOrFail($request->item_id);
+        $item = Product::findOrFail($request->product_id);
 
         $cart = Cart::updateOrCreate(
             [
                 'user_id' => auth()->id(),
-                'item_id' => $item->id,
+                'product_id' => $item->id,
             ],
             [
                 'quantity' => $request->quantity,

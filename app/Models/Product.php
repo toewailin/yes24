@@ -13,7 +13,7 @@ class Product extends Model
      *
      * @var string
      */
-    protected $table = 'items';
+    protected $table = 'products';
 
     /**
      * The attributes that are mass assignable.
@@ -88,10 +88,10 @@ class Product extends Model
         return $this->belongsTo(Artist::class);
     }
 
-    // Order items relationship
-    public function orderItems()
+    // Order products relationship
+    public function orderproducts()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderProduct::class);
     }
 
     /**
@@ -115,7 +115,7 @@ class Product extends Model
      * Scopes
      */
 
-    // Scope for active items
+    // Scope for active products
     public function scopeActive($query)
     {
         return $query->where('is_active', true);

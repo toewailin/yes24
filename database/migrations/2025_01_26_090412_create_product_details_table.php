@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_details', function (Blueprint $table) {
+        Schema::create('product_details', function (Blueprint $table) {
             $table->id();
 
-            // Relation to items table
-            $table->foreignId('item_id')->constrained()->cascadeOnDelete(); // Foreign key to items table
+            // Relation to products table
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete(); // Foreign key to products table
 
             // Additional item detail fields
             $table->string('attribute_name'); // Attribute name (e.g., size, color)
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('item_details');
+        Schema::dropIfExists('product_details');
     }
 };

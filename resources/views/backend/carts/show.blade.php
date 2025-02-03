@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <strong>Item:</strong> {{ $cart->item->name ?? 'N/A' }} (ID: {{ $cart->item_id }})
+                        <strong>Product:</strong> {{ $cart->item->name ?? 'N/A' }} (ID: {{ $cart->product_id }})
                     </div>
 
                     <div class="mb-6">

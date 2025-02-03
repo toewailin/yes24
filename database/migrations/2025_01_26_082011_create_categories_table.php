@@ -24,10 +24,9 @@ return new class extends Migration
             $table->softDeletes();
 
             // Self-referencing foreign key for nested categories
-            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('categories')->cascadeOnDelete();
         });
     }
-
 
     /**
      * Reverse the migrations.

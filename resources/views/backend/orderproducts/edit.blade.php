@@ -23,10 +23,10 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="item_id" class="block text-sm font-medium text-gray-700">Item</label>
-                            <select name="item_id" id="item_id" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm">
-                                @foreach ($items as $item)
-                                    <option value="{{ $item->id }}" {{ $orderItem->item_id == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                            <label for="product_id" class="block text-sm font-medium text-gray-700">Item</label>
+                            <select name="product_id" id="product_id" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm">
+                                @foreach ($products as $item)
+                                    <option value="{{ $item->id }}" {{ $orderItem->product_id == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>

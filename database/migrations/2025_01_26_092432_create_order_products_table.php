@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_items', function (Blueprint $table) {
+        Schema::create('order_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete(); // Foreign key to orders
-            $table->foreignId('item_id')->constrained()->cascadeOnDelete();  // Foreign key to items
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();  // Foreign key to products
             $table->integer('quantity'); // Quantity of the item
             $table->decimal('price', 10, 2); // Price per item
             $table->decimal('subtotal', 10, 2); // Subtotal (quantity * price)
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_items');
+        Schema::dropIfExists('order_products');
     }
 };

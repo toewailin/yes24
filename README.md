@@ -8,6 +8,7 @@ $ mysql_secure_installation
 $ brew install composer
 $ composer global require laravel/installer
 $ export PATH="$HOME/.composer/vendor/bin:$PATH"
+
 $ laravel new project_name
 $ cd project_name
 ➜ npm install && npm run build
@@ -55,15 +56,18 @@ php artisan make:middleware RoleMiddleware
 ```
 
 ## make migration to create table
-```bash
+```bash 
 php artisan migrate
 php artisan migrate:rollback --step=1
 
-php artisan migrate:reset
+php artisan migrate:reset (rerun the desire migration file)
+php artisan migrate:fresh
+php artisan migrate:ordered
 ```
 
 ## Make the layout file
 ```bash
+php artisan make:component AppLayout (default)
 php artisan make:component AdminLayout
 php artisan make:component UserLayout
 ```
@@ -71,16 +75,8 @@ php artisan make:component UserLayout
 ## for the view files make
 ```bash
 php artisan make:command MakeView
-php artisan make:view items
+php artisan make:view products
 php artisan make:component DashboardCard
-```
-
-## clear
-```bash
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
 ```
 
 ## role and permission
@@ -91,6 +87,10 @@ php artisan make:seeder RoleSeeder
 php artisan db:seed --class=RoleSeeder
 php artisan make:seeder UserRoleSeeder
 php artisan db:seed --class=UserRoleSeeder
+
+php artisan make:factory UserFactory --model=User
+php artisan make:seeder UserSeeder
+php artisan db:seed --class=UserSeeder
 
 php artisan make:seeder ArtistTableSeeder
 php artisan make:seeder CategoryTableSeeder
@@ -106,6 +106,13 @@ php artisan db:seed
 php artisan make:middleware RoleMiddleware
 ```
 
+## database
+```bash
+mysql -u root -p
+DROP DATABASE IF EXISTS db_yes24;
+CREATE DATABASE db_yes24;
+```
+
 ## migration
 ```bash
 php artisan migrate --path=database/migrations/0001_01_01_000000_create_users_table.php
@@ -117,19 +124,29 @@ php artisan migrate --path=database/migrations/2025_01_26_084125_create_subcateg
 php artisan migrate --path=database/migrations/2025_01_26_121919_create_suppliers_table.php
 php artisan migrate --path=database/migrations/2025_01_26_085514_create_artists_table.php
 php artisan migrate --path=database/migrations/2025_01_26_051339_create_products_table.php
-php artisan migrate --path=database/migrations/2025_01_26_090412_create_productdetails_table.php
+php artisan migrate --path=database/migrations/2025_01_26_090412_create_product_details_table.php
 php artisan migrate --path=database/migrations/2025_01_26_090941_create_carts_table.php
 php artisan migrate --path=database/migrations/2025_01_26_091512_create_orders_table.php
-php artisan migrate --path=database/migrations/2025_01_26_092432_create_orderproducts_table.php
+php artisan migrate --path=database/migrations/2025_01_26_092432_create_order_products_table.php
 php artisan migrate --path=database/migrations/2025_01_26_092804_create_faqs_table.php
 php artisan migrate --path=database/migrations/2025_01_26_093243_create_events_table.php
 php artisan migrate --path=database/migrations/2025_01_26_112403_create_banners_table.php
-php artisan make:seeder RoleSeeder
-php artisan db:seed --class=RoleSeeder
 ```
+
+## foreign key solution
+```bash
+$ SET FOREIGN_KEY_CHECKS = 0;
+$ drop or create table
+$ SET FOREIGN_KEY_CHECKS = 1;
 
 ## create the user account
 ```bash
 php artisan make:seeder UserRoleSeeder
 php artisan db:seed --class=UserRoleSeeder
 ```
+
+Role seeder ကို ပြန်စစ်ရန်
+User seeder နဲ့ ပြန်စစ်ရန်
+User Role Seeder ကို ပြန်စစ်ရန်
+Menu အလိုက်  Factory, Seeder ဆောက်ရန်
+Product နဲ့ ပတ်သတ်သမျှ ပြန် Trace လိုက်ရန်
