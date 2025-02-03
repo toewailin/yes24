@@ -17,6 +17,8 @@ $ cd project_name
 $ code .
 $ config .env
 
+$ php artisan key:generate
+
 $ CREATE database db_name;
 
 $ chmod -R 775 storage bootstrap/cache
