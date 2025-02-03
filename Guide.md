@@ -42,3 +42,5 @@ http://localhost:8000
 
 email - admin@gmail.com
 password - password
+
+Thank you!

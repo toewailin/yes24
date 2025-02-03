@@ -46,8 +46,8 @@ use App\Http\Controllers\Frontend\{
 
     // Cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    // Route::post('/cart/add', [CartController::class, 'store'])->name('cart.store');
-    // Route::delete('/cart/{cartItem}', [CartController::class, 'destroy'])->name('cart.destroy');
+    Route::post('/cart/add', [CartController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/{cartItem}', [CartController::class, 'destroy'])->name('cart.destroy');
 
     // Checkout
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
